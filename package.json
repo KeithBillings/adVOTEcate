@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "adVOTEcate",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "Your advocate to help you see if you are registered to vote, and help you register if you are not.",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
