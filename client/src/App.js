@@ -1,21 +1,48 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React from 'react';
+import ReactDOM from "react-dom";
+
+// Material UI Theme
+import theme from "./components/ThemeProvider";
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+// Material UI Components
+import {Card, CardContent, CardMedia } from '@material-ui/core';
+import ButtonAppBar from "./components/AppBar";
+import Typography from '@material-ui/core/Typography';
+
+
 import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ButtonAppBar />
+      <Card className={theme.card}>
+        <CardMedia
+          className={theme.media}
+          src="https://image.freepik.com/free-photo/river-foggy-mountains-landscape_1204-511.jpg"
+        />
+        <CardContent className={theme.content}>
+          <Typography
+            className={"MuiTypography--heading"}
+            variant={"h6"}
+            gutterBottom
+          >
+            Nature Around Us
+          </Typography>
+          <Typography
+            className={"MuiTypography--subheading"}
+            variant={"caption"}
+          >
+            We are going to learn different kinds of species in nature that live
+            together to form amazing environment.
+          </Typography>
+        </CardContent>
+      </Card>
+    </ThemeProvider>
+  )
 }
 
 export default App;
