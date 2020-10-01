@@ -1,15 +1,16 @@
 import React from "react";
-
+import Grid from '@material-ui/core/Grid';
 
 function UserEvents() {
 
     return (
-        <Container >
-            <Row>
-                <Col>
-                </Col>
-            </Row>
-        </Container>
+        <Grid container>
+            <Grid row>
+                <Grid column>
+                    <div>user events</div>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 }
 
