@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 // Material UI Theme
 import theme from "./components/ThemeProvider";
 import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// import CssBaseline from '@material-ui/core/CssBaseline';
+import { makeStyles } from "@material-ui/core/styles";
 
 // Material UI Components
 import {Card, CardContent, CardMedia } from '@material-ui/core';
@@ -21,12 +22,21 @@ import UserProfile from "./pages/UserProfile";
 import "./App.css";
 
 function App() {
+
+  const useStyles = makeStyles((theme) => ({
+    body: {
+      background: "green"
+    }
+  }));
+
+  const classes = useStyles(theme);
+  
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      
-      <Router>
-        <ButtonAppBar />  {/* aka navbar */}
+    <div > 
+    <ThemeProvider theme={theme} >
+      {/* <CssBaseline  /> */}
+      <Router  >
+        <ButtonAppBar  />  {/* aka navbar */}
 
         {/* Router for other pages */}
         <Route exact path="/" component={Home} />
@@ -37,6 +47,7 @@ function App() {
       </Router>
 
     </ThemeProvider>
+    </div>
   )
 }
 

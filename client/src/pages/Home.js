@@ -1,47 +1,65 @@
-import React from "react";
+import React, { useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Card, CardContent, Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 // import { withStyles } from '@material-ui/core/styles/withStyles';
-import theme from "../components/ThemeProvider"
+import theme from "../components/ThemeProvider";
+import registerData from "../utils/register.json";
+
 
 
 const useStyles = makeStyles((theme) => ({
   card: {
     marginTop: "10%",
     width: "50%",
-    textAlign: "center"
-  }, 
+    textAlign: "center",
+    background: "#E0E0E2"
+  },
   button: {
     // background: theme.palette.primary.main,
     // background: theme.palette.primary.light,
     background: "lightblue",
     margin: "1rem"
+  },
+  dropdown: {
+    background: "#F9F3DC"
   }
 }));
 
 function Home() {
   const classes = useStyles(theme);
-  console.log("the theme variable is: ", theme)
+  // console.log("the theme variable is: ", theme)
+
+  const [stateInfo, setstateInfo] = useState("");
+
+  //Function to get state information
+  const getStateInformation = (e) => {
+    e.preventDefault();
+    const dropdownValue = document.getElementById("userSelection").value;
+    const stateData = registerData[dropdownValue];
+
+    setstateInfo(stateData)
+  }
+
 
   return (
-    <Grid container direction={"column"} >
-      <Grid container item justify={"center"}>
-        <Card className={classes.card}>
-          <CardContent>
+    <Grid container direction={"column"}  >
+      <Grid container item justify={"center"} >
+        <Card className={classes.card} >
+          <CardContent >
             <Typography
               className={"MuiTypography--heading"}
               variant={"h6"}
               gutterBottom
             >
-              Register To Vote
+              Find Voting Information Based On Your Location
             </Typography>
             <Typography
               className={"MuiTypography--subheading"}
               variant={"caption"}
             >
-              <select name="userSelection" id="userSelection">
+              <select name="userSelection" id="userSelection" className={classes.dropdown}>
                 <option value="default">
                   Select your state or territory
                   </option>
@@ -103,6 +121,10 @@ function Home() {
                 <option value="wy">Wyoming</option>
               </select>
             </Typography>
+            <br></br>
+            <Button onClick={getStateInformation}>
+              Get Info
+            </Button>
           </CardContent>
         </Card>
       </Grid>
@@ -121,9 +143,13 @@ function Home() {
               variant={"caption"}
             >
               When a state is selected in the drop down menu, the states information is appended here.
+              <br></br>
+              To register online: <a href={`${stateInfo.online}`}>{stateInfo.online}</a> 
+              <br></br>
+              To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a> 
             </Typography>
             <Typography>
-              <Button className={classes.button}> 
+              <Button className={classes.button}>
                 Login
               </Button>
               <Button className={classes.button}>
