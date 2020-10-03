@@ -34,3 +34,11 @@
 .tertiary {
   color: #E0E0E2;
 }
+
+body {
+  background: #F9F3DC;
+  background-image: url("./images/voting.JPEG");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
