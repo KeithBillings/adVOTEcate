@@ -59,7 +59,7 @@ export default function ButtonAppBar() {
                 to="/"
                 className={
                   window.location.pathname === "/" ||
-                  window.location.pathname === "/home"
+                    window.location.pathname === "/home"
                     ? "nav-link active"
                     : "nav-link"
                 }
@@ -109,8 +109,9 @@ export default function ButtonAppBar() {
             <span className="tertiary">VOTE</span>
             <span className="secondary">cate</span>
           </Typography>
-          <Button color="inherit">
+          <Button>
             <Link
+              style={{ color: "whitesmoke" }}
               to="/login"
               className={
                 window.location.pathname === "/login"
