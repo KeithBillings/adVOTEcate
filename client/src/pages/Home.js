@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Card, CardContent, Button } from "@material-ui/core";
@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 // import { withStyles } from '@material-ui/core/styles/withStyles';
 import theme from "../components/ThemeProvider";
 import registerData from "../utils/register.json";
+import {Link} from "react-router-dom";
+//import "./home.css";
 
 
 
@@ -14,13 +16,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
     width: "50%",
     textAlign: "center",
-    background: "#E0E0E2"
-  },
-  button: {
-    // background: theme.palette.primary.main,
-    // background: theme.palette.primary.light,
-    background: "lightblue",
-    margin: "1rem"
+    background: "#F9F3DC"
   },
   dropdown: {
     background: "#F9F3DC"
@@ -39,14 +35,13 @@ function Home() {
     const dropdownValue = document.getElementById("userSelection").value;
     const stateData = registerData[dropdownValue];
 
-    setstateInfo(stateData)
+    setstateInfo(stateData);
   }
-
 
   return (
     <Grid container direction={"column"}  >
       <Grid container item justify={"center"} >
-        <Card className={classes.card} >
+        <Card className={classes.card} id="thisCard">
           <CardContent >
             <Typography
               className={"MuiTypography--heading"}
@@ -149,11 +144,29 @@ function Home() {
               To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a> 
             </Typography>
             <Typography>
-              <Button className={classes.button}>
-                Login
+              <Button>
+                <Link
+                  to="/login"
+                  className={
+                    window.location.pathname === "/login"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  Login
+                </Link>
               </Button>
-              <Button className={classes.button}>
-                Register
+              <Button>
+                <Link
+                    to="/login"
+                    className={
+                      window.location.pathname === "/login"
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    Register
+                  </Link>
               </Button>
             </Typography>
           </CardContent>
