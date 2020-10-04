@@ -1,39 +1,55 @@
 import React, { useState } from "react";
-import { Card, CardContent, Button, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Card, CardContent, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 import theme from "../components/ThemeProvider";
 import registerData from "../utils/register.json";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.png";
 //import "./home.css";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    marginTop: "10%",
+    textAlign: theme.card.textAlign,
+    boxShadow: theme.card.boxShadow,
+    "&:hover": theme.card["&:hover"],
+    marginBottom: "5%",
     width: "50%",
-    textAlign: "center",
-    background: "#F9F3DC"
+    background: "#F9F3DC",
   },
   dropdown: {
     background: "#F9F3DC"
+  },
+  logo: {
+    textAlign: "center",
+    marginBottom: "0%",
+    marginTop: "2%",
   }
 }));
 
 function Home() {
   const [stateInfo, setstateInfo] = useState("");
+  const [hidden, setHidden] = useState("none");
 
   const classes = useStyles(theme);
 
   //Function to get state information
-  const getStateInformation = (e) => {
-    e.preventDefault();
+  function getStateInformation() {
     const dropdownValue = document.getElementById("userSelection").value;
-    const stateData = registerData[dropdownValue] || ""; // added the || "" to handle a case where the user clicks submit on the default selection, so it doesnt return undefined and break the page
+    const stateData = registerData[dropdownValue] || ""; // added || "" to handle a case where the user clicks submit on the default selection, so it doesnt return undefined and break the page
 
     setstateInfo(stateData);
   }
 
+  const handleOnClickEvent = (e) => {
+    e.preventDefault();
+    getStateInformation();
+    setHidden("");
+  }
+
   return (
-    <Grid container direction={"column"}  >
+    <Grid container direction={"column"}>
+      <Grid justify={"center"} className={classes.logo}>
+        <img src={`${logo}`} alt="logo" />
+      </Grid>
       <Grid container item justify={"center"} >
         <Card className={classes.card} id="thisCard">
           <CardContent >
@@ -111,7 +127,7 @@ function Home() {
               </select>
             </Typography>
             <br></br>
-            <Button onClick={getStateInformation}>
+            <Button onClick={handleOnClickEvent}>
               Get Info
             </Button>
           </CardContent>
@@ -133,9 +149,14 @@ function Home() {
             >
               When a state is selected in the drop down menu, the states information is appended here.
               <br></br>
-              To register online: <a href={`${stateInfo.online}`}>{stateInfo.online}</a>
+              <span style={{ display: hidden }}>
+                To register online: <a href={`${stateInfo.online}`}>{stateInfo.online}</a>
+              </span>
               <br></br>
-              To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a>
+              <span style={{ display: hidden }}>
+                To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}
+                </a>
+              </span>
             </Typography>
             <Typography>
               <Button>

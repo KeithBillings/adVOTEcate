@@ -22,6 +22,7 @@ const theme = createMuiTheme({
     contrastThreshold: 3,
   },
   card: {
+    textAlign: "center",
     transition: "0.3s",
     boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
     "&:hover": {
