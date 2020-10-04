@@ -1,15 +1,10 @@
 import React, { useState } from "react";
+import { Card, CardContent, Button, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import { Card, CardContent, Button } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-// import { withStyles } from '@material-ui/core/styles/withStyles';
 import theme from "../components/ThemeProvider";
 import registerData from "../utils/register.json";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 //import "./home.css";
-
-
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -24,16 +19,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
-  const classes = useStyles(theme);
-  // console.log("the theme variable is: ", theme)
-
   const [stateInfo, setstateInfo] = useState("");
+
+  const classes = useStyles(theme);
 
   //Function to get state information
   const getStateInformation = (e) => {
     e.preventDefault();
     const dropdownValue = document.getElementById("userSelection").value;
-    const stateData = registerData[dropdownValue];
+    const stateData = registerData[dropdownValue] || ""; // added the || "" to handle a case where the user clicks submit on the default selection, so it doesnt return undefined and break the page
 
     setstateInfo(stateData);
   }
@@ -139,9 +133,9 @@ function Home() {
             >
               When a state is selected in the drop down menu, the states information is appended here.
               <br></br>
-              To register online: <a href={`${stateInfo.online}`}>{stateInfo.online}</a> 
+              To register online: <a href={`${stateInfo.online}`}>{stateInfo.online}</a>
               <br></br>
-              To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a> 
+              To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a>
             </Typography>
             <Typography>
               <Button>
@@ -158,14 +152,14 @@ function Home() {
               </Button>
               <Button>
                 <Link
-                    to="/login"
-                    className={
-                      window.location.pathname === "/login"
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
-                  >
-                    Register
+                  to="/login"
+                  className={
+                    window.location.pathname === "/login"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  Register
                   </Link>
               </Button>
             </Typography>
