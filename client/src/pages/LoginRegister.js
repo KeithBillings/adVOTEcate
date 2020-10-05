@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Card, CardContent, Button, Grid, Typography, makeStyles } from "@material-ui/core";
+
+import API from "../utils/API";
+
 import theme from "../components/ThemeProvider";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,8 +41,10 @@ function LoginRegister() {
       email: emailValue,
       phone: phoneValue
     }
-
-    console.log("the create values are: ", formValues);
+    API.signup(formValues).then(res => {
+      console.log(res);
+    })
+    // console.log("the create values are: ", formValues);
 
   }
 
@@ -53,7 +58,10 @@ function LoginRegister() {
       password: passwordValue
     }
 
-    console.log("the login values are: ", loginValues);
+    API.signin(loginValues).then(res => {
+      console.log(res);
+    })
+    // console.log("the login values are: ", loginValues);
   }
 
   return (
