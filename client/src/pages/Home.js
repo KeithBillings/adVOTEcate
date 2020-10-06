@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Card, CardContent, Button, Grid, Typography, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  Button,
+  Grid,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
 import theme from "../components/ThemeProvider";
 import registerData from "../utils/register.json";
 import { Link } from "react-router-dom";
@@ -16,13 +23,13 @@ const useStyles = makeStyles((theme) => ({
     background: "#F9F3DC",
   },
   dropdown: {
-    background: "#F9F3DC"
+    background: "#F9F3DC",
   },
   logo: {
     textAlign: "center",
     marginBottom: "0%",
     marginTop: "2%",
-  }
+  },
 }));
 
 function Home() {
@@ -43,16 +50,16 @@ function Home() {
     e.preventDefault();
     getStateInformation();
     setHidden("");
-  }
+  };
 
   return (
     <Grid container direction={"column"}>
-      <Grid justify={"center"} className={classes.logo}>
+      <Grid container justify={"center"} className={classes.logo}>
         <img src={`${logo}`} alt="logo" />
       </Grid>
-      <Grid container item justify={"center"} >
+      <Grid container item justify={"center"}>
         <Card className={classes.card} id="thisCard">
-          <CardContent >
+          <CardContent>
             <Typography
               className={"MuiTypography--heading"}
               variant={"h6"}
@@ -64,10 +71,12 @@ function Home() {
               className={"MuiTypography--subheading"}
               variant={"caption"}
             >
-              <select name="userSelection" id="userSelection" className={classes.dropdown}>
-                <option value="default">
-                  Select your state or territory
-                  </option>
+              <select
+                name="userSelection"
+                id="userSelection"
+                className={classes.dropdown}
+              >
+                <option value="default">Select your state or territory</option>
                 <option value="al">Alabama</option>
                 <option value="ak">Alaska</option>
                 <option value="as">American Samoa</option>
@@ -127,9 +136,7 @@ function Home() {
               </select>
             </Typography>
             <br></br>
-            <Button onClick={handleOnClickEvent}>
-              Get Info
-            </Button>
+            <Button onClick={handleOnClickEvent}>Get Info</Button>
           </CardContent>
         </Card>
       </Grid>
@@ -147,15 +154,17 @@ function Home() {
               className={"MuiTypography--subheading"}
               variant={"caption"}
             >
-              When a state is selected in the drop down menu, the states information is appended here.
+              When a state is selected in the drop down menu, the states
+              information is appended here.
               <br></br>
               <span style={{ display: hidden }}>
-                To register online: <a href={`${stateInfo.online}`}>{stateInfo.online}</a>
+                To register online:{" "}
+                <a href={`${stateInfo.online}`}>{stateInfo.online}</a>
               </span>
               <br></br>
               <span style={{ display: hidden }}>
-                To register by mail: <a href={`${stateInfo.mail}`}>{stateInfo.mail}
-                </a>
+                To register by mail:{" "}
+                <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a>
               </span>
             </Typography>
             <Typography>
@@ -181,7 +190,7 @@ function Home() {
                   }
                 >
                   Register
-                  </Link>
+                </Link>
               </Button>
             </Typography>
           </CardContent>
