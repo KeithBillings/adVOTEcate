@@ -1,5 +1,5 @@
 {
-  "name": "adVOTEcate",
+  "name": "advotecate",
   "version": "1.0.0",
   "description": "Your advocate to help you see if you are registered to vote, and help you register if you are not.",
   "main": "server.js",
