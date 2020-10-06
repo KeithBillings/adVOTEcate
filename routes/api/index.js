@@ -13,9 +13,10 @@ router.post("/users", [
   body("email").trim().isEmail().normalizeEmail().withMessage("Please enter an email"),
   body("phone").trim().isMobilePhone().withMessage("Please enter a phone number"),
 ], async (req, res) => {
-  console.log(req.body);
+  console.log("users route body is: ", req.body);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    console.log("validation errors in users are: ", errors);
     return res.status(400).json({ errors: errors.array() });
   }
   const { name, password, address, email, phone} = req.body;
@@ -24,11 +25,11 @@ router.post("/users", [
   // session mamagement
   res.status(201).json(newUser);
   } catch (err) {
+    console.log("err in users is: ", err);
     if (err instanceof MongoError) {
-      if (err.code === 11000) {
+      if (err.code === 11000) {        
         res.status(400).json({errors: [{msg: "Email already in use"}]});
       }
-      console.log(err);
     }
       res.status(500).end();
   }
