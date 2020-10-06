@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, MenuItem, AppBar, Button, Typography, Toolbar, IconButton } from "@material-ui/core";
+import { MenuList, MenuItem, AppBar, Button, Typography, Toolbar, IconButton, Grow, Popper, ClickAwayListener, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
@@ -18,16 +18,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ButtonAppBar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
   const classes = useStyles();
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+  const handleClick = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    if (anchorRef.current && anchorRef.current.contains(Event.target)) {
+      return;
+    }
+    setOpen(false);
   };
 
   return (
@@ -39,15 +41,26 @@ export default function ButtonAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            ref={anchorRef}
+            aria-controls={open ? 'menu-list-grow' : undefined}
+            aria-haspopup="true"
             onClick={handleClick}
           >
             <MenuIcon />
           </IconButton>
-          <Menu
+
+            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+              {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+
+          <MenuList
             id="simple-menu"
-            anchorEl={anchorEl}
             keepMounted
-            open={Boolean(anchorEl)}
             onClose={handleClose}
           >
             <MenuItem onClick={handleClose} className="menuItem">
@@ -99,7 +112,13 @@ export default function ButtonAppBar() {
                 Profile
               </Link>
             </MenuItem>
-          </Menu>
+          </MenuList>
+          </ClickAwayListener>
+          </Paper>
+              
+            </Grow>
+          )}
+        </Popper>
           <Typography align="left" variant="h6" className={classes.title}>
             <span className="secondary">ad</span>
             <span className="tertiary">VOTE</span>

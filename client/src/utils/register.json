@@ -22,55 +22,55 @@
     "name": "Arizona",
     "online": "https://servicearizona.com/VoterRegistration/selectLanguage?ref=voteusa",
     "mail": "https://azsos.gov/elections/voting-election/register-vote-or-update-your-current-voter-information?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://my.arizona.vote/PortalList.aspx"
   },
   "ar": {
     "name": "Arkansas",
     "online": "",
     "mail": "https://www.sos.arkansas.gov/elections/voter-information/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.voterview.ar-nova.org/voterview"
   },
   "ca": {
     "name": "California",
     "online": "https://registertovote.ca.gov/?ref=voteusa",
     "mail": "https://www.sos.ca.gov/elections/voting-resources/voting-california/registering-vote/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.sos.ca.gov/elections/polling-place/"
   },
   "co": {
     "name": "Colorado",
     "online": "https://www.sos.state.co.us/voter/pages/pub/home.xhtml?ref=voteusa",
     "mail": "https://www.sos.state.co.us/pubs/elections/vote/VoterHome.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.sos.state.co.us/pubs/elections/VIP.html"
   },
   "ct": {
     "name": "Connecticut",
     "online": "https://voterregistration.ct.gov/OLVR/welcome.do?ref=voteusa",
     "mail": "https://portal.ct.gov/SOTS/Election-Services/Voter-Information/Voter-Fact-Sheet?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://portaldir.ct.gov/sots/LookUp.aspx"
   },
   "de": {
     "name": "Delaware",
     "online": "https://ivote.de.gov/VoterView/?ref=voteusa",
     "mail": "https://elections.delaware.gov/voter/votereg.shtml?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://ivote.de.gov/VoterView"
   },
   "dc": {
     "name": "District of Columbia",
     "online": "https://forms.dc.gov/f/DC_Voter_Registration_Form?ref=voteusa",
     "mail": "https://www.vote4dc.com/ApplyInstructions/Register?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://dcboe.org/Voters/Where-to-Vote/Find-Out-Where-to-Vote"
   },
   "fl": {
     "name": "Florida",
     "online": "https://registertovoteflorida.gov/eligibilityreactive?ref=voteusa",
     "mail": "https://registertovoteflorida.gov/home?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://registration.elections.myflorida.com/CheckVoterStatus"
   },
   "ga": {
     "name": "Georgia",
     "online": "https://registertovote.sos.ga.gov/GAOLVR/welcome.do#no-back-button?ref=voteusa",
     "mail": "https://sos.ga.gov/index.php/Elections/register_to_vote?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.mvp.sos.ga.gov/MVP/mvp.do"
   },
   "gu": {
     "name": "Guam",
@@ -82,146 +82,146 @@
     "name": "Hawaii",
     "online": "https://olvr.hawaii.gov/?ref=voteusa",
     "mail": "https://elections.hawaii.gov/voters/registration/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://olvr.hawaii.gov/altpollingplacesearch.aspx"
   },
   "id": {
-    "name": "Alabama",
+    "name": "Idaho",
     "online": "https://elections.sos.idaho.gov/ElectionLink/ElectionLink/ApplicationInstructions.aspx?ref=voteusa",
     "mail": "https://idahovotes.gov/voting/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://elections.sos.idaho.gov/ElectionLink/ElectionLink/ViewPollingLocation.aspx "
   },
   "il": {
-    "name": "Idaho",
+    "name": "Illinois",
     "online": "https://ova.elections.il.gov/?ref=voteusa",
     "mail": "https://www.elections.il.gov/Default.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://ova.elections.il.gov/PollingPlaceLookup.aspx"
   },
   "in": {
     "name": "Indiana",
     "online": "https://indianavoters.in.gov/?ref=voteusa",
     "mail": "https://www.in.gov/sos/elections/2403.htm?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://indianavoters.in.gov/"
   },
   "ia": {
     "name": "Iowa",
     "online": "https://mymvd.iowadot.gov/Account/Login?ReturnUrl=%2fVoterRegistration&?ref=voteusa",
     "mail": "https://sos.iowa.gov/elections/voterinformation/voterregistration.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://sos.iowa.gov/elections/voterreg/pollingplace/search.aspx"
   },
   "ks": {
     "name": "Kansas",
     "online": "https://www.kdor.ks.gov/Apps/VoterReg/Default.aspx?ref=voteusa",
     "mail": "https://sos.ks.gov/elections/voter-information.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://myvoteinfo.voteks.org/VoterView/PollingPlaceSearch.do"
   },
   "ky": {
     "name": "Kentucky",
     "online": "https://vrsws.sos.ky.gov/ovrweb/?ref=voteusa",
     "mail": "https://elect.ky.gov/Resources/Pages/Registration.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://vrsws.sos.ky.gov/vic/"
   },
   "la": {
     "name": "Louisiana",
     "online": "https://voterportal.sos.la.gov/VoterRegistration?ref=voteusa",
     "mail": "https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote/Pages/default.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://voterportal.sos.la.gov/"
   },
   "me": {
     "name": "Maine",
     "online": "",
     "mail": "https://www.maine.gov/sos/cec/elec/voter-info/voterguide.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www1.maine.gov/portal/government/edemocracy/voter_lookup.php"
   },
   "md": {
     "name": "Maryland",
     "online": "https://voterservices.elections.maryland.gov/OnlineVoterRegistration/InstructionsStep1?ref=voteusa",
     "mail": "https://www.elections.maryland.gov/voter_registration/application.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://elections.maryland.gov/voting/where.html"
   },
   "ma": {
     "name": "Massachusetts",
     "online": "https://www.sec.state.ma.us/ovr/?ref=voteusa",
     "mail": "https://www.sec.state.ma.us/ele/eleifv/howreg.htm?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.sec.state.ma.us/wheredoivotema/bal/MyElectionInfo.aspx"
   },
   "mi": {
     "name": "Michigan",
     "online": "https://mvic.sos.state.mi.us/registervoter?ref=voteusa",
     "mail": "https://mvic.sos.state.mi.us/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://mvic.sos.state.mi.us/"
   },
   "mn": {
     "name": "Minnesota",
     "online": "https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx?ref=voteusa",
     "mail": "https://www.sos.state.mn.us/elections-voting/register-to-vote/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://pollfinder.sos.state.mn.us/"
   },
   "ms": {
     "name": "Mississippi",
     "online": "",
     "mail": "https://www.sos.ms.gov/Vote/Pages/default.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.sos.ms.gov/PollingPlace/Pages/default.aspx"
   },
   "mo": {
     "name": "Missouri",
     "online": "https://s1.sos.mo.gov/elections/voterregistration/?ref=voteusa",
     "mail": "https://www.sos.mo.gov/elections/goVoteMissouri/register?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://voteroutreach.sos.mo.gov/PRD/VoterOutreach/VOSearch.aspx"
   },
   "mt": {
     "name": "Montana",
     "online": "",
     "mail": "https://sosmt.gov/elections/vote/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://app.mt.gov/voterinfo/"
   },
   "ne": {
     "name": "Nebraska",
     "online": "https://www.nebraska.gov/apps-sos-voter-registration/?ref=voteusa",
     "mail": "https://sos.nebraska.gov/elections/voter-forms?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.votercheck.necvr.ne.gov/VoterView/PollingPlaceSearch.do"
   },
   "nv": {
     "name": "Nevada",
     "online": "https://www.nvsos.gov/SOSVoterServices/start.aspx?ref=voteusa",
     "mail": "https://www.nvsos.gov/sos/elections/voters/registering-to-vote?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.nvsos.gov/votersearch/"
   },
   "nh": {
     "name": "New Hampshire",
     "online": "",
     "mail": "",
     "inPerson": "https://sos.nh.gov/elections/voters/register-to-vote/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://app.sos.nh.gov/Public/PollingPlaceSearch.aspx"
   },
   "nj": {
     "name": "New Jersey",
     "online": "https://voter.svrs.nj.gov/register",
     "mail": "https://nj.gov/state/elections/voter-registration.shtml?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://voter.svrs.nj.gov/polling-place-search"
   },
   "nm": {
     "name": "New Mexico",
     "online": "https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx?ref=voteusa",
     "mail": "https://www.sos.state.nm.us/voting-and-elections/voter-information/voter-registration-information/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://voterportal.servis.sos.state.nm.us/WhereToVoteAddress.aspx"
   },
   "ny": {
     "name": "New York",
     "online": "https://dmv.ny.gov/more-info/electronic-voter-registration-application?ref=voteusa",
     "mail": "https://www.elections.ny.gov/votingregister.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://voterlookup.elections.ny.gov/"
   },
   "nc": {
     "name": "North Carolina",
     "online": "https://www.ncdot.gov/dmv/offices-services/online/Pages/voter-registration-application.aspx?ref=voteusa",
     "mail": "https://www.ncsbe.gov/registering/how-register?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://vt.ncsbe.gov/PPLkup/"
   },
   "nd": {
     "name": "North Dakota",
     "online": "",
     "mail": "https://vip.sos.nd.gov/PortalList.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://vip.sos.nd.gov/wheretovote.aspx"
   },
   "mp": {
     "name": "Northern Mariana Islands",
@@ -233,25 +233,25 @@
     "name": "Ohio",
     "online": "https://olvr.ohiosos.gov/?ref=voteusa",
     "mail": "https://ohio.gov/wps/portal/gov/site/government/resources/register-to-vote-or-update-your-registration?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://voterlookup.ohiosos.gov/VoterLookup.aspx"
   },
   "ok": {
     "name": "Oklahoma",
     "online": "",
     "mail": "https://www.ok.gov/elections/Voter_Info/Register_to_Vote/index.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://okvoterportal.okelections.us/"
   },
   "or": {
     "name": "Oregon",
     "online": "https://secure.sos.state.or.us/orestar/vr/register.do?ref=voteusa",
     "mail": "https://sos.oregon.gov/voting/Pages/registration.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://sos.oregon.gov/voting/Pages/drop-box-locator.aspx"
   },
   "pa": {
     "name": "Pennsylvania",
     "online": "https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx?ref=voteusa",
     "mail": "https://www.pa.gov/guides/voting-and-elections/#RegisteringtoVote?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.pavoterservices.pa.gov/Pages/PollingPlaceInfo.aspx"
   },
   "pr": {
     "name": "Puerto Rico",
@@ -263,31 +263,31 @@
     "name": "Rhode Island",
     "online": "https://vote.sos.ri.gov/Home/RegistertoVote?ref=voteusa",
     "mail": "https://vote.sos.ri.gov/Voter/RegisterToVote?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://vote.sos.ri.gov/Home/PollingPlaces?ActiveFlag=2"
   },
   "sc": {
     "name": "South Carolina",
     "online": "https://info.scvotes.sc.gov/eng/ovr/start.aspx?ref=voteusa",
     "mail": "https://www.scvotes.gov/south-carolina-voter-registration-information?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx?PageMode=VoterInfo"
   },
   "sd": {
     "name": "South Dakota",
     "online": "",
     "mail": "https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://vip.sdsos.gov/viplogin.aspx"
   },  
   "tn": {
     "name": "Tennessee",
     "online": "https://ovr.govote.tn.gov/?ref=voteusa",
     "mail": "https://sos.tn.gov/products/elections/register-vote?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://web.go-vote-tn.elections.tn.gov/"
   },
   "tx": {
     "name": "Texas",
     "online": "",
     "mail": "https://www.votetexas.gov/register-to-vote/index.html?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://teamrv-mvp.sos.texas.gov/MVP/mvp.do"
   },
   "vi": {
     "name": "U.S. Virgin Islands",
@@ -300,42 +300,42 @@
     "name": "Utah",
     "online": "https://secure.utah.gov/voterreg/index.html?ref=voteusa",
     "mail": "https://voteinfo.utah.gov/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://votesearch.utah.gov/voter-search/search/search-by-address/how-and-where-can-i-vote"
   },
   "vt": {
     "name": "Vermont",
     "online": "https://olvr.vermont.gov/?ref=voteusa",
     "mail": "https://sos.vermont.gov/elections/voters/registration/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://mvp.sec.state.vt.us/"
   },
   "va": {
     "name": "Virgina",
     "online": "https://www.elections.virginia.gov/citizen-portal/?ref=voteusa",
     "mail": "https://www.elections.virginia.gov/registration/how-to-register/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.elections.virginia.gov/citizen-portal/index.html"
   },
   "wa": {
     "name": "Washington",
     "online": "https://voter.votewa.gov/WhereToVote.aspx?ref=voteusa",
     "mail": "https://www.sos.wa.gov/elections/voters/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://www.sos.wa.gov/elections/auditors/"
   },
   "wv": {
     "name": "West Virgina",
     "online": "https://ovr.sos.wv.gov/Register/Landing?ref=voteusa",
     "mail": "https://ovr.sos.wv.gov/Register/Landing?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://services.sos.wv.gov/Elections/Voter/FindMyPollingPlace"
   },
   "wi": {
     "name": "Wisconsin",
     "online": "https://myvote.wi.gov/en-us/RegisterToVote?ref=voteusa",
     "mail": "https://elections.wi.gov/voters/first-time?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://myvote.wi.gov/en-US/FindMyPollingPlace"
   },
   "wy": {
     "name": "Wyoming",
     "online": "",
     "mail": "https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"https://soswy.state.wy.us/Elections/PollPlace/Default.aspx"
   }
 }
