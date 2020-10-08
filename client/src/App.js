@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -22,6 +22,7 @@ import UserProfile from "./pages/UserProfile";
 import "./App.css";
 
 function App() {
+  const [user, setUser] = useState({});
 
   const useStyles = makeStyles((theme) => ({
     body: {
@@ -41,9 +42,13 @@ function App() {
         {/* Router for other pages */}
         <Route exact path="/" component={Home} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/login" component={LoginRegister} />
+        <Route exact path="/login">
+          <LoginRegister user={user} setUser={setUser}/>
+        </Route>
         <Route exact path="/events" component={UserEvents} />
-        <Route exact path="/profile" component={UserProfile} />
+        <Route exact path="/profile">
+          <UserProfile user={user}/>
+        </Route>
       </Router>
 
     </ThemeProvider>

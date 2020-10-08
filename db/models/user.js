@@ -9,6 +9,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  email: {
+    type: String,
+    unique: true
+  },
   password: {
     type: String,
     required: true
@@ -17,9 +21,17 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  email: {
+  city: {
     type: String,
-    unique: true
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  zip: {
+    type: String,
+    required: true
   },
   phone: {
     type: String
