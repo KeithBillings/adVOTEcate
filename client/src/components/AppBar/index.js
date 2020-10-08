@@ -15,6 +15,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
+
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -137,6 +138,9 @@ export default function ButtonAppBar() {
               </Grow>
             )}
           </Popper>
+
+          
+
           <Typography align="left" variant="h6" className={classes.title}>
             <span className="secondary">ad</span>
             <span className="tertiary">VOTE</span>
