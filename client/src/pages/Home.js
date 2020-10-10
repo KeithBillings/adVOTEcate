@@ -15,6 +15,7 @@ import logo from "../images/logo.png";
 // AOS
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+AOS.init();
 
 //import "./home.css";
 
@@ -36,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2%",
   },
 }));
-
-AOS.init();
 
 function Home() {
   const [stateInfo, setstateInfo] = useState("");
