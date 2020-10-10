@@ -4,17 +4,18 @@ import {
   MenuItem,
   AppBar,
   Button,
-  Typography,
   Toolbar,
   IconButton,
   Grow,
   Popper,
   ClickAwayListener,
   Paper,
+  Container
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
+import logoWide from "../../images/logoWide.png";
 
 import "./style.css";
 
@@ -80,7 +81,7 @@ export default function ButtonAppBar() {
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList
                       id="simple-menu"
-                      keepMounted
+                      keepmounted="true"
                       onClose={handleClose}
                     >
                       <MenuItem onClick={handleClose} className="menuItem">
@@ -139,13 +140,9 @@ export default function ButtonAppBar() {
             )}
           </Popper>
 
-          
-
-          <Typography align="left" variant="h6" className={classes.title}>
-            <span className="secondary">ad</span>
-            <span className="tertiary">VOTE</span>
-            <span className="secondary">cate</span>
-          </Typography>
+          <Container align="center">
+            <img src={logoWide} alt="logoWide" />
+          </Container>
           <Button>
             <Link
               style={{ color: "whitesmoke" }}
