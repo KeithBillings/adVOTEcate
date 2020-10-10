@@ -16,7 +16,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import logoWide from "../../images/logoWide.png";
-
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
