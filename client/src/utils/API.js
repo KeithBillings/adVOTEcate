@@ -12,5 +12,12 @@ export default {
       console.log("post signin users error is: ", err)
       return err
     });  
+  },
+  getVotingDates(state) {
+    state = state.toUpperCase();
+    return axios.get("https://cors-anywhere.herokuapp.com/https://api.voteamerica.com/v1/election/state/" + state).catch(err => {
+      console.log("get voting dates error is: ", err)
+      return err
+    })
   }
 }

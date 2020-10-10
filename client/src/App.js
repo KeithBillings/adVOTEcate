@@ -38,7 +38,9 @@ function App() {
         <Route exact path="/login">
           <LoginRegister user={user} setUser={setUser}/>
         </Route>
-        <Route exact path="/events" component={UserEvents} />
+        <Route exact path="/events">
+          <UserEvents user={user}/>
+        </Route>
         <Route exact path="/profile">
           <UserProfile user={user}/>
         </Route>
