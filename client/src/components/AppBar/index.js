@@ -138,7 +138,6 @@ export default function ButtonAppBar() {
               </Grow>
             )}
           </Popper>
-
           <Container align="center">
             <img src={logoWide} alt="logoWide" />
           </Container>
