@@ -14,7 +14,13 @@ import LoginRegister from "./pages/LoginRegister";
 import UserEvents from "./pages/UserEvents";
 import UserProfile from "./pages/UserProfile";
 
+// AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import "./App.css";
+
+AOS.init();
 
 function App() {
   const [user, setUser] = useState({});
