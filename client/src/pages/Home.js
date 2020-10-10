@@ -11,6 +11,11 @@ import theme from "../components/ThemeProvider";
 import registerData from "../utils/register.json";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
+
+// AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 //import "./home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2%",
   },
 }));
+
+AOS.init();
 
 function Home() {
   const [stateInfo, setstateInfo] = useState("");
@@ -58,7 +65,7 @@ function Home() {
         <img src={`${logo}`} alt="logo" />
       </Grid>
       <Grid container item justify={"center"}>
-        <Card className={classes.card} id="thisCard">
+        <Card className={classes.card} data-aos="fade-up">
           <CardContent>
             <Typography
               className={"MuiTypography--heading"}
@@ -141,7 +148,7 @@ function Home() {
         </Card>
       </Grid>
       <Grid container item justify={"center"}>
-        <Card className={classes.card}>
+        <Card className={classes.card} data-aos="fade-up">
           <CardContent>
             <Typography
               className={"MuiTypography--heading"}
