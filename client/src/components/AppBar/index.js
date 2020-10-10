@@ -4,7 +4,6 @@ import {
   MenuItem,
   AppBar,
   Button,
-  Typography,
   Toolbar,
   IconButton,
   Grow,
@@ -81,7 +80,7 @@ export default function ButtonAppBar() {
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList
                       id="simple-menu"
-                      keepMounted
+                      keepmounted="true"
                       onClose={handleClose}
                     >
                       <MenuItem onClick={handleClose} className="menuItem">
@@ -140,7 +139,7 @@ export default function ButtonAppBar() {
             )}
           </Popper>
           <Container align="center">
-            <img src={`${logoWide}`} alt="logoWide" />
+            <img src={logoWide} alt="logoWide" />
           </Container>
           <Button>
             <Link

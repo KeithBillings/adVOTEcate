@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { Card, CardContent, Button, Grid, Typography, makeStyles } from "@material-ui/core";
+import { Card, Button, Grid, Typography, makeStyles } from "@material-ui/core";
 
 import API from "../utils/API";
 
 import theme from "../components/ThemeProvider";
-
-import UserProfile from "../pages/UserProfile";
 
 const useStyles = makeStyles((theme) => ({
   card: {
