@@ -7,8 +7,11 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import theme from "../components/ThemeProvider";
-// import registerData from "../utils/register.json";
 import API from "../utils/API";
+import DenseTable from "../components/Table";
+
+//For google maps API
+// import MapContainer from "../components/MapContainer";
 
 // AOS
 import AOS from 'aos';
@@ -36,23 +39,71 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UserEvents({user}) {
-  const [stateName, setStateName] = useState("");
-  const [stateInfoText, setStateInfoText] = useState("");
-
   const classes = useStyles(theme);
 
+  const [stateName, setStateName] = useState("");
+  const [stateInfoText, setStateInfoText] = useState("");
+  const [ballotDropOffEvent, setBallotDropOffEvent] = useState("");
+  const [ballotDropOffDate, setBallotDropOffDate] = useState("");
+  const [ballotByMailEvent, setBallotByMailEvent] = useState("");
+  const [ballotByMailDate, setBallotByMailDate] = useState("");
+  const [ballotInPersonEvent, setBallotInPersonEvent] = useState("");
+  const [ballotInPersonDate, setBallotInPersonDate] = useState("");
+  const [generalElectionEvent, setGeneralElectionEvent] = useState("");
+  const [generalElectionDate, setGeneralElectionDate] = useState("");
+  const [dropOffLocationsByCity, setDropOffLocationsByCity] = useState([]);
+
+  //User Information
+  const userAddress = user.address + " " + user.city + " " + user.state + " " + user.zip;
+
+  // //All state info
   function getAPI() {
     return API.getVotingDates(user.state)
   }
 
-  function setStates () {
+  //Civic Info API for voting locations
+  // function getCivicInfo() {
+  //   return API.getDropOffLocations(userAddress);
+  // }
+
+  function setState() {
     getAPI().then(function (res) {
       setStateName(res.data.name);
       setStateInfoText(res.data.state_information[0]["text"]);
-  })};
+
+      const stateInfo = res.data.state_information;
+
+      stateInfo.forEach((info) => {
+        if(info.field_type === "2020_ballot_drop_date"){
+          setBallotDropOffEvent(info.field_type);
+          setBallotDropOffDate(info.text);
+        } else if(info.field_type === "2020_ballot_return_deadline_by_mail"){
+          setBallotByMailEvent(info.field_type);
+          setBallotByMailDate(info.text);
+        } else if(info.field_type === "2020_ballot_return_deadline_in_person"){
+          setBallotInPersonEvent(info.field_type);
+          setBallotInPersonDate(info.text);
+        } else if(info.field_type === "2020_general_election_date"){
+          setGeneralElectionEvent(info.field_type);
+          setGeneralElectionDate(info.text);
+        }
+      })
+    },
+  )}
+
+  // function setCoordinatesState() {
+  //   getCivicInfo().then(function(res) {
+  //     const locations = res.data.dropOffLocations;
+  //     const locationsInUserCity = locations.filter((location) => {
+  //       return location.address.city === user.city;
+  //     })
+  //     setDropOffLocationsByCity(locationsInUserCity);
+  //   })
+  // }
 
   useEffect(() => {
-    setStates();
+    setState();
+    // setCoordinatesState();
   }, []);
 
   return (
@@ -65,13 +116,32 @@ function UserEvents({user}) {
               variant={"h5"}
               gutterBottom
             >
-              {stateName}
+              Important Dates for {stateName}
             </Typography>
             <Typography>
               State Information: {stateInfoText}
             </Typography>
+            <br></br>
+            <DenseTable ballotDropOffEvent={ballotDropOffEvent} ballotDropOffDate={ballotDropOffDate} ballotByMailEvent={ballotByMailEvent} ballotByMailDate={ballotByMailDate} ballotInPersonEvent={ballotInPersonEvent} ballotInPersonDate={ballotInPersonDate} generalElectionEvent={generalElectionEvent} generalElectionDate={generalElectionDate}/>
           </CardContent>
         </Card>
+      </Grid>
+      <Grid container item justify={"center"}>
+        <Card className={classes.card} data-aos="fade-up">
+          <CardContent>
+            <Typography
+              className={""}
+              variant={"h5"}
+              gutterBottom
+            >
+              Polling Locations Near You
+            </Typography>
+            <br></br>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid>
+        {/* <MapContainer dropOffLocationsByCity={dropOffLocationsByCity}/> */}
       </Grid>
     </Grid>
   );
