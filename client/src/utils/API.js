@@ -21,7 +21,7 @@ export default {
     })
   },
   getDropOffLocations(address) {
-    return axios.get("https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address=" + address + "&electionId=7000&key=" + API_KEY_HERE).catch(err => {
+    return axios.get("https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address=" + address + "&electionId=7000&key=API_KEY_HERE").catch(err => {
       console.log("get drop off location error is: ", err)
       return err
     })
