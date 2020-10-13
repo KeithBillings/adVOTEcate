@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Card,
   CardContent,
@@ -9,9 +9,11 @@ import {
 import theme from "../components/ThemeProvider";
 import API from "../utils/API";
 import DenseTable from "../components/Table";
+import DropOffContext from "../utils/DropOffContext";
 
 //For google maps API
-// import MapContainer from "../components/MapContainer";
+import PollMap from "../components/Map";
+import { withScriptjs, GoogleMap, withGoogleMap } from "react-google-maps";
 
 // AOS
 import AOS from 'aos';
@@ -56,15 +58,15 @@ function UserEvents({user}) {
   //User Information
   const userAddress = user.address + " " + user.city + " " + user.state + " " + user.zip;
 
-  // //All state info
+  //All state info
   function getAPI() {
     return API.getVotingDates(user.state)
   }
 
   //Civic Info API for voting locations
-  // function getCivicInfo() {
-  //   return API.getDropOffLocations(userAddress);
-  // }
+  function getCivicInfo() {
+    return API.getDropOffLocations(userAddress);
+  }
 
   function setState() {
     getAPI().then(function (res) {
@@ -91,19 +93,19 @@ function UserEvents({user}) {
     },
   )}
 
-  // function setCoordinatesState() {
-  //   getCivicInfo().then(function(res) {
-  //     const locations = res.data.dropOffLocations;
-  //     const locationsInUserCity = locations.filter((location) => {
-  //       return location.address.city === user.city;
-  //     })
-  //     setDropOffLocationsByCity(locationsInUserCity);
-  //   })
-  // }
+  function setCoordinatesState() {
+    getCivicInfo().then(function(res) {
+      const locations = res.data.dropOffLocations;
+      const locationsInUserCity = locations.filter((location) => {
+        return location.address.city === user.city;
+      })
+      setDropOffLocationsByCity(locationsInUserCity);
+    })
+  }
 
   useEffect(() => {
     setState();
-    // setCoordinatesState();
+    setCoordinatesState();
   }, []);
 
   return (
@@ -139,9 +141,11 @@ function UserEvents({user}) {
             <br></br>
           </CardContent>
         </Card>
-      </Grid>
-      <Grid>
-        {/* <MapContainer dropOffLocationsByCity={dropOffLocationsByCity}/> */}
+        <Grid container item style={{height: "5vh"}}>
+          <DropOffContext.Provider value={dropOffLocationsByCity}>
+            <PollMap />
+          </DropOffContext.Provider>
+        </Grid>
       </Grid>
     </Grid>
   );
