@@ -12,6 +12,7 @@ import mapStyles from "./mapStyles";
 
 function Map(){
   const [dropOffLocations, setDropOffLocations] = useState([]); 
+  const [selectedDropOffLocation, setSelectedDropOffLocation] = useState(null); 
 
   const dropOffData = useContext(DropOffContext);
   console.log("drop off data (context) is: ", dropOffData);
@@ -22,7 +23,7 @@ function Map(){
 
     const listener = e => {
       if (e.key === "Escape") {
-        setDropOffLocations(null); 
+        setSelectedDropOffLocation(null); 
       }
     };
     window.addEventListener("keydown", listener);
@@ -38,20 +39,24 @@ function Map(){
       defaultCenter={{ lat: 44.039200, lng: -123.099258 }}
       defaultOptions={{ styles: mapStyles}}
     >
-      {dropOffLocations.map((location, i) => {
-      return(
-        <Marker
-        key={i}
+      <Marker
         position={{
-          lat: location.latitude,
-          lng: location.longitude
+          lat: 44.039200,
+          lng: -123.099260
         }}
-        // onClick={() => {
-        //   setDropOffLocations(location);
-        // }}
       />
-      )
-      
+
+      {dropOffData.map((location, i) => {
+        console.log(location.latitude);
+        return(
+          <Marker
+          key={i}
+          position={{
+            lat: location.latitude,
+            lng: location.longitude
+          }}
+        />
+        )
       })}
     </GoogleMap>
   );
@@ -61,7 +66,7 @@ const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 export default function PollMap() {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "75vw", height: "75vh" }}>
       <MapWrapped
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB3Mumu8O6cU5_iwSU6KqjeNT1tn8XVP0Q`}
         loadingElement={<div style={{ height: `100%` }} />}

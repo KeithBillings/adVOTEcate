@@ -25,5 +25,11 @@ export default {
       console.log("get drop off location error is: ", err)
       return err
     })
+  },
+  getGeocode(address) {
+    return axios.get("https://maps.googleapis.com/maps/api/geocode/xml?address=" + address + "&key=AIzaSyBdXDp62MxR6fZwoJ4Hq5HPFzPB761IFwM").catch(err => {
+      console.log("get geocode error is: ", err)
+      return err
+    })
   }
 }
