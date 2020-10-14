@@ -7,20 +7,17 @@ import {
   InfoWindow
 } from "react-google-maps";
 import DropOffContext from "../../utils/DropOffContext";
+import UserLocationsContext from "../../utils/UserLocationsContext";
 import mapStyles from "./mapStyles";
 
 
 function Map(){
-  const [dropOffLocations, setDropOffLocations] = useState([]); 
   const [selectedDropOffLocation, setSelectedDropOffLocation] = useState(null); 
 
   const dropOffData = useContext(DropOffContext);
-  console.log("drop off data (context) is: ", dropOffData);
+  const userLocationData = useContext(UserLocationsContext);
 
   useEffect(() => {
-    setDropOffLocations(dropOffData);
-    console.log("Drop off locations in the state are: ", dropOffLocations);
-
     const listener = e => {
       if (e.key === "Escape") {
         setSelectedDropOffLocation(null); 
@@ -33,33 +30,52 @@ function Map(){
     };
   }, []);
 
-  return(
-    <GoogleMap
-      defaultZoom={13}
-      defaultCenter={{ lat: 44.039200, lng: -123.099258 }}
-      defaultOptions={{ styles: mapStyles}}
-    >
-      <Marker
-        position={{
-          lat: 44.039200,
-          lng: -123.099260
+  if(userLocationData) {
+    return(
+      <GoogleMap
+        defaultZoom={13}
+        defaultCenter={{
+          lat: userLocationData.lat, 
+          lng: userLocationData.lng 
         }}
-      />
-
-      {dropOffData.map((location, i) => {
-        console.log(location.latitude);
-        return(
-          <Marker
-          key={i}
-          position={{
-            lat: location.latitude,
-            lng: location.longitude
-          }}
-        />
-        )
-      })}
-    </GoogleMap>
-  );
+        defaultOptions={{ styles: mapStyles}}
+      >
+        {dropOffData.map((location, i) => {
+          return(
+            <Marker
+              key={i}
+              position={{
+                lat: location.latitude,
+                lng: location.longitude
+              }}
+              onClick={() => {
+                setSelectedDropOffLocation(location);
+              }}
+            />
+          )
+        })}
+        {selectedDropOffLocation && (
+          <InfoWindow
+            onCloseClick={() => {
+              setSelectedDropOffLocation(null);
+            }}
+            position={{
+              lat: selectedDropOffLocation.latitude,
+              lng: selectedDropOffLocation.longitude
+            }}
+          >
+            <div>
+              <h2>{selectedDropOffLocation.address.locationName}</h2>
+              <h4>{selectedDropOffLocation.address.line1 + " " + selectedDropOffLocation.address.city + "," + " " + selectedDropOffLocation.address.state + " " + selectedDropOffLocation.address.zip}</h4>
+              <p>{selectedDropOffLocation.notes}</p>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    );
+  } else {
+  return <div>Loading...</div>
+  }
 }
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));

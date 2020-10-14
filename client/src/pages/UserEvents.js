@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -10,10 +10,10 @@ import theme from "../components/ThemeProvider";
 import API from "../utils/API";
 import DenseTable from "../components/Table";
 import DropOffContext from "../utils/DropOffContext";
+import UserLocationsContext from "../utils/UserLocationsContext";
 
 //For google maps API
 import PollMap from "../components/Map";
-import { withScriptjs, GoogleMap, withGoogleMap } from "react-google-maps";
 
 // AOS
 import AOS from 'aos';
@@ -54,7 +54,7 @@ function UserEvents({user}) {
   const [generalElectionEvent, setGeneralElectionEvent] = useState("");
   const [generalElectionDate, setGeneralElectionDate] = useState("");
   const [dropOffLocationsByCity, setDropOffLocationsByCity] = useState([]);
-  const [geocodeState, setGeocodeState] = useState("");
+  const [geocode, setGeocode] = useState("");
 
   //User Information
   const userAddress = user.address + " " + user.city + " " + user.state + " " + user.zip;
@@ -109,11 +109,10 @@ function UserEvents({user}) {
     })
   }
 
-  function handleGeocodeState() {
+  function setGeocodeState() {
     getGeocode().then(function(res) {
-      console.log("geocode response is: ", res);
-      setGeocodeState(res)
-      // const coords = res;
+      const userCoords = res.data.results[0].geometry.location;
+      setGeocode(userCoords);
     })
   }
 
@@ -156,7 +155,9 @@ function UserEvents({user}) {
             <br></br>
             <Grid container item >
               <DropOffContext.Provider value={dropOffLocationsByCity}>
-                <PollMap />
+                <UserLocationsContext.Provider value={geocode}>
+                  <PollMap />
+                </UserLocationsContext.Provider>
               </DropOffContext.Provider>
             </Grid>
           </CardContent>

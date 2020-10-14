@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ButtonAppBar({isLoggedIn, setIsLoggedIn}) {
-  console.log("the state of is logged in is: ", isLoggedIn)
   const classes = useStyles();
  
   return (

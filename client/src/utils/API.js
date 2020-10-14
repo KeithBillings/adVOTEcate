@@ -27,7 +27,7 @@ export default {
     })
   },
   getGeocode(address) {
-    return axios.get("https://maps.googleapis.com/maps/api/geocode/xml?address=" + address + "&key=AIzaSyBdXDp62MxR6fZwoJ4Hq5HPFzPB761IFwM").catch(err => {
+    return axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyB3Mumu8O6cU5_iwSU6KqjeNT1tn8XVP0Q").catch(err => {
       console.log("get geocode error is: ", err)
       return err
     })
