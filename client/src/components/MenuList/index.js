@@ -5,6 +5,7 @@ import {
   IconButton,
   Grow,
   Popper,
+  Button,
   ClickAwayListener,
   Paper,
   Container
@@ -18,15 +19,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
 }));
 
-export default function NavMenuList() {
+export default function NavMenuList({isLoggedIn, setIsLoggedIn}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -41,97 +39,101 @@ export default function NavMenuList() {
     setOpen(false);
   };
 
+  function handleLogoutClick () {
+    setIsLoggedIn(false);
+  };
+
   return (
-  <Container>
-  <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            ref={anchorRef}
-            aria-controls={open ? "menu-list-grow" : undefined}
-            aria-haspopup="true"
-            onClick={handleClick}
+    <Container>
+      <IconButton
+        edge="start"
+        className={classes.menuButton}
+        color="inherit"
+        aria-label="menu"
+        ref={anchorRef}
+        aria-controls={open ? "menu-list-grow" : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <MenuIcon />
+      </IconButton>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom",
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      id="simple-menu"
-                      keepmounted="true"
-                      onClose={handleClose}
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  id="simple-menu"
+                  keepmounted="true"
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose} className="menuItem">
+                    <Link
+                      to="/"
+                      className={
+                        window.location.pathname === "/" ||
+                        window.location.pathname === "/home"
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
                     >
-                      <MenuItem onClick={handleClose} className="menuItem">
-                        <Link
-                          to="/"
-                          className={
-                            window.location.pathname === "/" ||
-                            window.location.pathname === "/home"
-                              ? "nav-link active"
-                              : "nav-link"
-                          }
-                        >
-                          Home
-                        </Link>
-                      </MenuItem>
-                      <MenuItem onClick={handleClose} className="menuItem">
-                        <Link
-                          to="/profile"
-                          className={
-                            window.location.pathname === "/profile"
-                              ? "nav-link active"
-                              : "nav-link"
-                          }
-                        >
-                          Profile
-                        </Link>
-                      </MenuItem>
-                      <MenuItem onClick={handleClose} className="menuItem">
-                        <Link
-                          to="/events"
-                          className={
-                            window.location.pathname === "/events"
-                              ? "nav-link active"
-                              : "nav-link"
-                          }
-                        >
-                          Events
-                        </Link>
-                      </MenuItem>
-                      <MenuItem onClick={handleClose} className="menuItem">
-                        <Link
-                          to="/login"
-                          className={
-                            window.location.pathname === "/login"
-                              ? "nav-link active"
-                              : "nav-link"
-                          }
-                        >
-                          Login
-                        </Link>
-                      </MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
-          </Container>
-);
+                      Home
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="menuItem">
+                    <Link
+                      to="/profile"
+                      className={
+                        window.location.pathname === "/profile"
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                    >
+                      Profile
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="menuItem">
+                    <Link
+                      to="/events"
+                      className={
+                        window.location.pathname === "/events"
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                    >
+                      Events
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose, handleLogoutClick} className="menuItem">
+                    <Link
+                      to="/"
+                      className={
+                        window.location.pathname === "/home"
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                    >
+                      Log Out
+                    </Link>
+                  </MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </Container>
+  );
 }

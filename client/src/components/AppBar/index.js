@@ -3,6 +3,7 @@ import {
   AppBar,
   Button,
   Toolbar,
+  Grid,
   Container
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,38 +16,46 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
-  },
+  }
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({isLoggedIn, setIsLoggedIn}) {
+  console.log("the state of is logged in is: ", isLoggedIn)
   const classes = useStyles();
  
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <NavMenuList />
-          <Container align="center">
-            <img src={logoWide} alt="logoWide" />
-          </Container>
-          <Button>
-            <Link
-              style={{ color: "whitesmoke" }}
-              to="/login"
-              className={
-                window.location.pathname === "/login"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Sign Up/Login
-            </Link>
-          </Button>
+        <Toolbar className="toolBar">
+          <Grid 
+            container 
+            direction="row"
+            spacing={0}
+            alignItems="center"
+            justify="center">
+            <Grid item xs={4}>
+              {isLoggedIn ? <NavMenuList setIsLoggedIn={setIsLoggedIn}  /> : <Button>
+                <Link
+                  style={{ color: "whitesmoke" }}
+                  to="/login"
+                  className={
+                    window.location.pathname === "/login"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  Sign Up/Login
+                </Link>
+              </Button>}
+            </Grid>
+            <Grid item xs={8}>
+              <img className={classes.logo} src={logoWide} alt="adVOTEcate logoWide" />
+            </Grid>
+            <Grid item>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     </div>

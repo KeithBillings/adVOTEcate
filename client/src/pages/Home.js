@@ -183,19 +183,7 @@ function Home() {
                       : "nav-link"
                   }
                 >
-                  Login
-                </Link>
-              </Button>
-              <Button>
-                <Link
-                  to="/login"
-                  className={
-                    window.location.pathname === "/login"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                >
-                  Register
+                  Login/Register
                 </Link>
               </Button>
             </Typography>

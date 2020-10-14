@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": theme.card["&:hover"],
     marginBottom: "5%",
     marginTop: "5%",
-    width: "50%",
+    width: "60%",
     background: "#F9F3DC",
   },
   dropdown: {
@@ -54,6 +54,7 @@ function UserEvents({user}) {
   const [generalElectionEvent, setGeneralElectionEvent] = useState("");
   const [generalElectionDate, setGeneralElectionDate] = useState("");
   const [dropOffLocationsByCity, setDropOffLocationsByCity] = useState([]);
+  const [geocodeState, setGeocodeState] = useState("");
 
   //User Information
   const userAddress = user.address + " " + user.city + " " + user.state + " " + user.zip;
@@ -66,6 +67,11 @@ function UserEvents({user}) {
   //Civic Info API for voting locations
   function getCivicInfo() {
     return API.getDropOffLocations(userAddress);
+  }
+
+  //Geocoding API
+  function getGeocode() {
+    return API.getGeocode(userAddress);
   }
 
   function setState() {
@@ -103,9 +109,18 @@ function UserEvents({user}) {
     })
   }
 
+  function handleGeocodeState() {
+    getGeocode().then(function(res) {
+      console.log("geocode response is: ", res);
+      setGeocodeState(res)
+      // const coords = res;
+    })
+  }
+
   useEffect(() => {
     setState();
     setCoordinatesState();
+    setGeocodeState();
   }, []);
 
   return (
@@ -139,13 +154,13 @@ function UserEvents({user}) {
               Polling Locations Near You
             </Typography>
             <br></br>
+            <Grid container item >
+              <DropOffContext.Provider value={dropOffLocationsByCity}>
+                <PollMap />
+              </DropOffContext.Provider>
+            </Grid>
           </CardContent>
         </Card>
-        <Grid container item style={{height: "5vh"}}>
-          <DropOffContext.Provider value={dropOffLocationsByCity}>
-            <PollMap />
-          </DropOffContext.Provider>
-        </Grid>
       </Grid>
     </Grid>
   );

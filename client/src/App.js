@@ -24,25 +24,26 @@ AOS.init();
 
 function App() {
   const [user, setUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div > 
+    <div> 
     <ThemeProvider theme={theme} >
       {/* <CssBaseline  /> */}
       <Router  >
-        <ButtonAppBar  />  {/* aka navbar */}
+        <ButtonAppBar  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>  {/* aka navbar */}
 
         {/* Router for other pages */}
         <Route exact path="/" component={Home} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/login">
-          <LoginRegister user={user} setUser={setUser}/>
+          <LoginRegister user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         </Route>
         <Route exact path="/events">
-          <UserEvents user={user}/>
+          <UserEvents user={user} isLoggedIn={isLoggedIn}/>
         </Route>
         <Route exact path="/profile">
-          <UserProfile user={user}/>
+          <UserProfile user={user} isLoggedIn={isLoggedIn}/>
         </Route>
       </Router>
 
