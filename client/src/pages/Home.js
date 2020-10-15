@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -17,8 +17,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
 
-//import "./home.css";
-
 const useStyles = makeStyles((theme) => ({
   card: {
     textAlign: theme.card.textAlign,
@@ -26,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": theme.card["&:hover"],
     marginBottom: "5%",
     width: "50%",
-    background: "#F9F3DC",
+    background: "white",
   },
   dropdown: {
-    background: "#F9F3DC",
+    background: "white",
   },
   logo: {
     textAlign: "center",
@@ -40,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
   const [stateInfo, setstateInfo] = useState("");
-  const [hidden, setHidden] = useState("none");
+  const [messageHidden, setMessageHidden] = useState("none");
+  const [onlineHidden, setOnlineHidden] = useState("none");
+  const [mailHidden, setMailHidden] = useState("none");
+  const [inPersonHidden, setInPersonHidden] = useState("none");
 
   const classes = useStyles(theme);
 
@@ -51,12 +52,32 @@ function Home() {
 
     setstateInfo(stateData);
   }
+  
+  function handleHidden () {
+    if (stateInfo.message){
+      setMessageHidden("block")
+    } else setMessageHidden("none")
+    if (stateInfo.online){
+      setOnlineHidden("block")
+    } else setOnlineHidden("none")
+    if (stateInfo.mail){
+      setMailHidden("block")
+    } else setMailHidden("none")
+    if (stateInfo.inPerson){
+      setInPersonHidden("block")
+    } else setInPersonHidden("none")
+  }
 
   const handleOnClickEvent = (e) => {
     e.preventDefault();
+    handleHidden();
     getStateInformation();
-    setHidden("");
   };
+
+  useEffect(() => {
+    handleHidden();
+  });
+
 
   return (
     <Grid container direction={"column"}>
@@ -159,19 +180,28 @@ function Home() {
             <Typography
               className={"MuiTypography--subheading"}
               variant={"caption"}
-            >
-              When a state is selected in the drop down menu, the states
-              information is appended here.
-              <br></br>
-              <span style={{ display: hidden }}>
-                To register online:{" "}
-                <a href={`${stateInfo.online}`}>{stateInfo.online}</a>
+            >  
+              <h4>
+                Info on your state: 
+              </h4>
+              <span style={{ display: messageHidden}}>
+                {stateInfo.message ? stateInfo.message : ``}
+              </span> 
+                {stateInfo.message ? <br/> : ``}
+              <span style={{ display: onlineHidden}}>
+                {stateInfo.online ? "To register by online: " : ``}
+                {stateInfo.online ? <a href={`${stateInfo.online}`}>{stateInfo.online}</a> : ``}
               </span>
-              <br></br>
-              <span style={{ display: hidden }}>
-                To register by mail:{" "}
-                <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a>
+                {stateInfo.online? <br/> : ``}
+              <span style={{ display: mailHidden}}>
+                {stateInfo.mail ? "To register by mail: " : ``}
+                {stateInfo.mail ? <a href={`${stateInfo.mail}`}>{stateInfo.mail}</a> : ``}
               </span>
+                {stateInfo.mail? <br/> : ``}
+              <span style={{ display: inPersonHidden}}>
+                {stateInfo.inPerson ? "To register in person: " : ``}
+                {stateInfo.inPerson ? <a href={`${stateInfo.inPerson}`}>{stateInfo.inPerson}</a> : ``}
+              </span>        
             </Typography>
             <Typography>
               <Button>
@@ -183,7 +213,7 @@ function Home() {
                       : "nav-link"
                   }
                 >
-                  Login/Register
+                  Sign Up/Log In
                 </Link>
               </Button>
             </Typography>

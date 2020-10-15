@@ -8,7 +8,7 @@ import theme from "../components/ThemeProvider";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    background: "#F9F3DC",
+    background: "white",
     textAlign: "center",
     justifyContent: "center",
     boxShadow: theme.card.boxShadow,
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   dropdown: {
-    background: "#F9F3DC"
+    background: "white"
   },
   form: {
     display: "table",
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem"
   }
 }));
-
 
 function LoginRegister({ setUser, user, isLoggedIn, setIsLoggedIn }) {
   const classes = useStyles(theme);
@@ -65,7 +64,13 @@ function LoginRegister({ setUser, user, isLoggedIn, setIsLoggedIn }) {
       zip: zipValue,
       phone: phoneValue
     }
-    API.signup(formValues);
+    API.signup(formValues).then(res => {
+      if(res.status === 201) {
+        return res;
+      } else {
+        alert("The email you are trying to use is associated with another account. Please sign up with another email.");
+      }
+    }); 
   }
 
   const handleLoginSubmit = (e) => {
@@ -94,7 +99,6 @@ function LoginRegister({ setUser, user, isLoggedIn, setIsLoggedIn }) {
   return (
     <Grid container direction={"column"}>
       <Grid container item justify={"center"} >
-        {/* login card */}
         <Card className={classes.card}>
           <Typography variant={"h4"} className={classes.h4}>
             Login
@@ -116,7 +120,6 @@ function LoginRegister({ setUser, user, isLoggedIn, setIsLoggedIn }) {
           <Button onClick={handleLoginSubmit}>
             Login
           </Button>
-          {/* create account card */}
         </Card>
       </Grid>
       <Grid container direction={"column"}  >

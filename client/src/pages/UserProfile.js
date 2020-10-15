@@ -1,11 +1,13 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+ 
 import {
   Card,
   CardContent,
   Grid,
   Typography,
   makeStyles,
+  Button
 } from "@material-ui/core";
 
 import theme from "../components/ThemeProvider";
@@ -18,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": theme.card["&:hover"],
     marginBottom: "5%",
     width: "50%",
-    background: "#F9F3DC",
+    background: "white",
   }
 }));
 
@@ -68,6 +70,19 @@ function UserProfile({user}) {
                 Phone Number: {user.phone}
               </span>
             </Typography>
+            <br/>
+            <Button>
+              <Link
+                to="/events"
+                className={
+                  window.location.pathname === "/events"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Events
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       </Grid>
