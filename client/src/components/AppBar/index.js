@@ -3,8 +3,7 @@ import {
   AppBar,
   Button,
   Toolbar,
-  Grid,
-  Container
+  Grid
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -12,7 +11,7 @@ import logoWide from "../../images/logoWide.png";
 import "./style.css";
 import NavMenuList from "../MenuList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -50,9 +49,17 @@ export default function ButtonAppBar({isLoggedIn, setIsLoggedIn}) {
               </Button>}
             </Grid>
             <Grid item xs={8}>
-              <img className={classes.logo} src={logoWide} alt="adVOTEcate logoWide" />
-            </Grid>
-            <Grid item>
+                <Link
+                  style={{ color: "whitesmoke" }}
+                  to="/"
+                  className={
+                    window.location.pathname === "/"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  <img className={classes.logo} src={logoWide} alt="adVOTEcate logoWide" />
+                </Link>
             </Grid>
           </Grid>
         </Toolbar>

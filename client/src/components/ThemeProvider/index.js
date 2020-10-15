@@ -12,7 +12,7 @@ const theme = createMuiTheme({
     },
     tertiary: {
       // white
-      main: "#E0E0E2",
+      main: "white",
     },
     // light: will be calculated from palette.primary.main,
     // dark: will be calculated from palette.primary.main,

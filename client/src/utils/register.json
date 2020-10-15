@@ -74,9 +74,10 @@
   },
   "gu": {
     "name": "Guam",
-    "online": "https://gec.guam.gov/register/?ref=voteusa",
+    "online": "",
     "mail": "https://gec.guam.gov/?ref=voteusa",
-    "pollLocator":""
+    "pollLocator":"",
+    "message": "Online registration is now closed in preparation for the 2020 General Election."
   },
   "hi": {
     "name": "Hawaii",

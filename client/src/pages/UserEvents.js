@@ -28,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5%",
     marginTop: "5%",
     width: "60%",
-    background: "#F9F3DC",
+    background: "white",
   },
   dropdown: {
-    background: "#F9F3DC",
+    background: "white",
   },
   logo: {
     textAlign: "center",
@@ -150,7 +150,7 @@ function UserEvents({user}) {
               variant={"h5"}
               gutterBottom
             >
-              Polling Locations Near You
+              Drop Box Locations Near You
             </Typography>
             <br></br>
             <Grid container item >

@@ -30,6 +30,11 @@ function Map(){
     };
   }, []);
 
+  function fullMapAddress () {
+    const fullAddress = `${selectedDropOffLocation.address.line1} ${selectedDropOffLocation.address.city}, ${selectedDropOffLocation.address.state} ${selectedDropOffLocation.address.zip}`;
+    return fullAddress
+  }
+
   if(userLocationData) {
     return(
       <GoogleMap
@@ -66,7 +71,7 @@ function Map(){
           >
             <div>
               <h2>{selectedDropOffLocation.address.locationName}</h2>
-              <h4>{selectedDropOffLocation.address.line1 + " " + selectedDropOffLocation.address.city + "," + " " + selectedDropOffLocation.address.state + " " + selectedDropOffLocation.address.zip}</h4>
+              <h4>{fullMapAddress()}</h4>
               <p>{selectedDropOffLocation.notes}</p>
             </div>
           </InfoWindow>

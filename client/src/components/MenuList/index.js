@@ -5,15 +5,13 @@ import {
   IconButton,
   Grow,
   Popper,
-  Button,
   ClickAwayListener,
   Paper,
-  Container
+  Container,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
-// import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavMenuList({isLoggedIn, setIsLoggedIn}) {
+export default function NavMenuList({ isLoggedIn, setIsLoggedIn }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -39,9 +37,10 @@ export default function NavMenuList({isLoggedIn, setIsLoggedIn}) {
     setOpen(false);
   };
 
-  function handleLogoutClick () {
+  function handleLogoutClick() {
     setIsLoggedIn(false);
-  };
+    handleClose();
+  }
 
   return (
     <Container>
@@ -116,7 +115,7 @@ export default function NavMenuList({isLoggedIn, setIsLoggedIn}) {
                       Events
                     </Link>
                   </MenuItem>
-                  <MenuItem onClick={handleClose, handleLogoutClick} className="menuItem">
+                  <MenuItem onClick={handleLogoutClick} className="menuItem">
                     <Link
                       to="/"
                       className={
