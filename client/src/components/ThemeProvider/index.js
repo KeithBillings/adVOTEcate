@@ -1,9 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
-  typography: {
-    fontFamily: '"Avenir"'
-  },
   palette: {
     primary: {
       // blue
