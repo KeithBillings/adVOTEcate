@@ -10,7 +10,8 @@ import {
 import theme from "../components/ThemeProvider";
 import registerData from "../utils/register.json";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearchLocation, faFlagUsa} from '@fortawesome/free-solid-svg-icons';
 
 // AOS
 import AOS from 'aos';
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: theme.card.textAlign,
     boxShadow: theme.card.boxShadow,
     "&:hover": theme.card["&:hover"],
-    marginBottom: "5%",
+    marginTop: "5%",
     width: "50%",
     background: "white",
   },
@@ -34,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "0%",
     marginTop: "2%",
   },
+  button: {
+    backgroundColor: "#268be3",
+    "&:hover": {backgroundColor: theme.palette.primary.light},
+    color: "white"
+  }
 }));
 
 function Home() {
@@ -81,21 +87,21 @@ function Home() {
 
   return (
     <Grid container direction={"column"}>
-      <Grid container justify={"center"} className={classes.logo}>
-        <img src={`${logo}`} alt="logo" />
-      </Grid>
       <Grid container item justify={"center"}>
         <Card className={classes.card} data-aos="fade-up">
           <CardContent>
+            <FontAwesomeIcon icon={faSearchLocation} size="3x"/>
+            <br/>
+            <br/>
             <Typography
-              className={"MuiTypography--heading"}
-              variant={"h6"}
+              className={"MuiTypography--heading", classes.typography}
+              variant={"h5"}
               gutterBottom
             >
               Find Voting Information Based On Your Location
             </Typography>
             <Typography
-              className={"MuiTypography--subheading"}
+              className={"MuiTypography--subheading", classes.typography}
               variant={"caption"}
             >
               <select
@@ -162,28 +168,12 @@ function Home() {
                 <option value="wy">Wyoming</option>
               </select>
             </Typography>
-            <br></br>
-            <Button onClick={handleOnClickEvent}>Get Info</Button>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid container item justify={"center"}>
-        <Card className={classes.card} data-aos="fade-up">
-          <CardContent>
+            <br/>
+            <br/>
             <Typography
-              className={"MuiTypography--heading"}
-              variant={"h6"}
-              gutterBottom
-            >
-              Welcome
-            </Typography>
-            <Typography
-              className={"MuiTypography--subheading"}
-              variant={"caption"}
+              className={"MuiTypography--subheading", classes.typography}
+              variant={"subtitle2"}
             >  
-              <h4>
-                Info on your state: 
-              </h4>
               <span style={{ display: messageHidden}}>
                 {stateInfo.message ? stateInfo.message : ``}
               </span> 
@@ -201,22 +191,47 @@ function Home() {
               <span style={{ display: inPersonHidden}}>
                 {stateInfo.inPerson ? "To register in person: " : ``}
                 {stateInfo.inPerson ? <a href={`${stateInfo.inPerson}`}>{stateInfo.inPerson}</a> : ``}
-              </span>        
+              </span> 
+              {stateInfo.inPerson? <br/> : ``}      
             </Typography>
-            <Typography>
-              <Button>
-                <Link
-                  to="/login"
-                  className={
-                    window.location.pathname === "/login"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                >
-                  Sign Up/Log In
-                </Link>
-              </Button>
+            <Button className={classes.button} onClick={handleOnClickEvent}>Get Info</Button>
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid container item justify={"center"}>
+        <Card className={classes.card} data-aos="fade-up">
+          <CardContent>
+            <FontAwesomeIcon icon={faFlagUsa} size="3x"/>
+            <br/>
+            <br/>
+            <Typography
+              className={"MuiTypography--heading"}
+              variant={"h5"}
+              gutterBottom
+            >
+              Welcome
             </Typography>
+            <Typography
+              className={"MuiTypography--subheding"}
+              variant={"subtitle1"}
+              gutterBottom
+            >
+              AdVOTEcate is your advocate to your voting needs! Our app intends to shows users how to register to vote, where the nearest polls are, sends text reminders near voting dates, and provides information of how to vote by mail.
+            </Typography>
+            <br/>
+            <Button className={classes.button}>
+              <Link
+                style={{ color: "white" }}
+                to="/login"
+                className={
+                  window.location.pathname === "/login"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Sign Up/Log In
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       </Grid>

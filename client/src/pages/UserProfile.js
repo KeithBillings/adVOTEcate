@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
- 
 import {
   Card,
   CardContent,
@@ -9,8 +8,10 @@ import {
   makeStyles,
   Button
 } from "@material-ui/core";
-
 import theme from "../components/ThemeProvider";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,9 +19,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: theme.card.textAlign,
     boxShadow: theme.card.boxShadow,
     "&:hover": theme.card["&:hover"],
-    marginBottom: "5%",
+    marginTop: "5%",
     width: "50%",
     background: "white",
+  },
+  button: {
+    backgroundColor: "#268be3",
+    "&:hover": {backgroundColor: theme.palette.primary.light},
+    color: "white"
   }
 }));
 
@@ -29,50 +35,52 @@ function UserProfile({user}) {
 
   return (
     <Grid container direction={"column"}>
-      <br></br>
       <Grid container item justify={"center"}>
         <Card className={classes.card}>
           <CardContent>
+            <FontAwesomeIcon icon={faUserCircle} size="3x"/>
+            <br/>
+            <br/>
             <Typography
               className={"MuiTypography--heading"}
-              variant={"h6"}
+              variant={"h5"}
               gutterBottom
             >
               Welcome, {user.name}!
             </Typography>
             <Typography
               className={"MuiTypography--subheading"}
-              variant={"caption"}
+              variant={"subtitle1"}
             >
-              Your Account Information
-              <br></br>
               <span>
                 Email: {user.email} 
               </span>
-              <br></br>
+              <br/>
               <span>
                 Address: {user.address}
               </span>
-              <br></br>
+              <br/>
               <span>
                 City: {user.city}
               </span>
-              <br></br>
+              <br/>
               <span>
                 State: {user.state}
               </span>
-              <br></br>
+              <br/>
               <span>
                 Zip Code: {user.zip}
               </span>
-              <br></br>
+              <br/>
               <span>
                 Phone Number: {user.phone}
               </span>
             </Typography>
             <br/>
-            <Button>
+            <br/>
+            <Button className={classes.button}>
               <Link
+                style={{ color: "white" }}
                 to="/events"
                 className={
                   window.location.pathname === "/events"
