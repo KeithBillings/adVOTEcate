@@ -1,6 +1,9 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: '"Avenir"'
+  },
   palette: {
     primary: {
       // blue
@@ -8,11 +11,7 @@ const theme = createMuiTheme({
     },
     secondary: {
       // red
-      main: "#7F242F",
-    },
-    tertiary: {
-      // white
-      main: "white",
+      main: "#d44444",
     },
     // light: will be calculated from palette.primary.main,
     // dark: will be calculated from palette.primary.main,
@@ -24,13 +23,10 @@ const theme = createMuiTheme({
   card: {
     textAlign: "center",
     transition: "0.3s",
-    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.6)",
     "&:hover": {
-    boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
+    boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.6)",
     },
-  },
-  media: {
-    paddingTop: "56.25%",
   },
   content: {
     textAlign: "left",
@@ -41,10 +37,7 @@ const theme = createMuiTheme({
   subheading: {
     lineHeight: 1.8,
   },
-  avatar: {
-    display: "inline-block",
-    border: "2px solid white",
-  },
+
 });
 
 export default theme;

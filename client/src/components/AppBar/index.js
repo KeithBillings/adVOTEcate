@@ -50,7 +50,6 @@ export default function ButtonAppBar({isLoggedIn, setIsLoggedIn}) {
             </Grid>
             <Grid item xs={8}>
                 <Link
-                  style={{ color: "whitesmoke" }}
                   to="/"
                   className={
                     window.location.pathname === "/"

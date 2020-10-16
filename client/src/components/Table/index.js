@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles({
   table: {
@@ -18,14 +19,78 @@ function DenseTable({ballotDropOffEvent, ballotDropOffDate, ballotByMailEvent, b
   const classes = useStyles();
 
   const createData = (event, date, reminder) => {
+    event = event.replace(/[_-]/g, " ");
+    if (date.length === 10){
+      let day = date.slice(-2);
+      let month = date.slice(-5, -3);
+      let year = date.slice(0,4);
+      if (month === "01"){
+        month = "January"
+      }
+      if (month === "02"){
+        month = "February"
+      }
+      if (month === "03"){
+        month = "March"
+      }
+      if (month === "04"){
+        month = "April"
+      }
+      if (month === "05"){
+        month = "May"
+      }
+      if (month === "06"){
+        month = "June"
+      }
+      if (month === "07"){
+        month = "July"
+      }
+      if (month === "08"){
+        month = "August"
+      }
+      if (month === "09"){
+        month = "September"
+      }
+      if (month === "10"){
+        month = "October"
+      }
+      if (month === "11"){
+        month = "November"
+      }
+      if (month === "12"){
+        month = "December"
+      }
+      date = `${month} ${day}, ${year}`
+      // console.log("date is: ", date);
+    }
     return { event, date, reminder };
   }
   
   const rows = [
-    createData(ballotDropOffEvent, ballotDropOffDate, "Reminder? Checkbox here for either texting or setting to google calendar"),
-    createData(ballotByMailEvent, ballotByMailDate, "Reminder? Checkbox here for either texting or setting to google calendar"),
-    createData(ballotInPersonEvent, ballotInPersonDate, "Reminder? Checkbox here for either texting or setting to google calendar"),
-    createData(generalElectionEvent, generalElectionDate, "Reminder? Checkbox here for either texting or setting to google calendar")
+    createData(ballotDropOffEvent, ballotDropOffDate, 
+      <Checkbox
+        value="checkedA"
+        inputProps={{ 'aria-label': 'Checkbox A' }}
+      />
+    ),
+    createData(ballotByMailEvent, ballotByMailDate, 
+      <Checkbox
+        value="checkedB"
+        inputProps={{ 'aria-label': 'Checkbox B' }}
+      />
+    ),
+    createData(ballotInPersonEvent, ballotInPersonDate, 
+      <Checkbox
+        value="checkedC"
+        inputProps={{ 'aria-label': 'Checkbox C' }}
+      />
+    ),
+    createData(generalElectionEvent, generalElectionDate, 
+      <Checkbox
+        value="checkedD"
+        inputProps={{ 'aria-label': 'Checkbox D' }}
+      />
+    )
   ];
 
   return (

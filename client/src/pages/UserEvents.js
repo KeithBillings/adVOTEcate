@@ -11,6 +11,8 @@ import API from "../utils/API";
 import DenseTable from "../components/Table";
 import DropOffContext from "../utils/DropOffContext";
 import UserLocationsContext from "../utils/UserLocationsContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVoteYea, faClock} from '@fortawesome/free-solid-svg-icons';
 
 //For google maps API
 import PollMap from "../components/Map";
@@ -25,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: theme.card.textAlign,
     boxShadow: theme.card.boxShadow,
     "&:hover": theme.card["&:hover"],
-    marginBottom: "5%",
     marginTop: "5%",
     width: "60%",
     background: "white",
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     marginBottom: "0%",
     marginTop: "2%",
-  },
+  }
 }));
 
 function UserEvents({user}) {
@@ -128,16 +129,19 @@ function UserEvents({user}) {
         <Card className={classes.card} data-aos="fade-up">
           <CardContent>
             <Typography
-              className={""}
               variant={"h5"}
+              className={"MuiTypography--subheading"}
               gutterBottom
             >
+            <FontAwesomeIcon icon={faClock} size="2x"/>
+            <br/>
+            <br/>
               Important Dates for {stateName}
             </Typography>
             <Typography>
               State Information: {stateInfoText}
             </Typography>
-            <br></br>
+            <br/>
             <DenseTable ballotDropOffEvent={ballotDropOffEvent} ballotDropOffDate={ballotDropOffDate} ballotByMailEvent={ballotByMailEvent} ballotByMailDate={ballotByMailDate} ballotInPersonEvent={ballotInPersonEvent} ballotInPersonDate={ballotInPersonDate} generalElectionEvent={generalElectionEvent} generalElectionDate={generalElectionDate}/>
           </CardContent>
         </Card>
@@ -145,14 +149,20 @@ function UserEvents({user}) {
       <Grid container item justify={"center"}>
         <Card className={classes.card} data-aos="fade-up">
           <CardContent>
+            <FontAwesomeIcon icon={faVoteYea} size="3x"/>
+            <br/>
+            <br/>
             <Typography
-              className={""}
               variant={"h5"}
+              className={"MuiTypography--subheading"}
               gutterBottom
             >
               Drop Box Locations Near You
             </Typography>
-            <br></br>
+            <Typography>
+              Visit one of these locations to drop off your ballot
+            </Typography>
+            <br/>
             <Grid container item >
               <DropOffContext.Provider value={dropOffLocationsByCity}>
                 <UserLocationsContext.Provider value={geocode}>
